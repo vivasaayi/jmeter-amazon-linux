@@ -1,0 +1,22 @@
+{
+  "name": "jmeter-amazon-linux",
+  "version": "1.0.0",
+  "description": "526470662813.dkr.ecr.us-east-1.amazonaws.com/vivasaayi/jmeter-amazon-linux:latest",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivasaayi/jmeter-amazon-linux.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vivasaayi/jmeter-amazon-linux/issues"
+  },
+  "homepage": "https://github.com/vivasaayi/jmeter-amazon-linux#readme",
+  "dependencies": {
+    "aws-lambda-ric": "^1.1.0"
+  }
+}
