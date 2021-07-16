@@ -7,6 +7,7 @@ RUN amazon-linux-extras enable corretto8
 RUN yum install java-1.8.0-amazon-corretto -y
 RUN yum install tar -y
 
+RUN echo "Rebuilding..."
 
 ARG JMETER_VERSION="5.4.1"
 
@@ -28,8 +29,14 @@ RUN mkdir -p /tmp/data \
     && cd ${JMETER_HOME}/lib/ext \
     && curl -O https://repo1.maven.org/maven2/kg/apc/jmeter-plugins-manager/1.6/jmeter-plugins-manager-1.6.jar 
 
+RUN ls
+RUN pwd
+
 RUN java -cp ${JMETER_HOME}/lib/ext/jmeter-plugins-manager-1.6.jar org.jmeterplugins.repository.PluginManagerCMDInstaller \
     && ${JMETER_HOME}/bin/PluginsManagerCMD.sh install-all-except jpgc-casutg,jpgc-autostop,ubik-jmeter-autocorrelator-plugin,ubik-jmeter-gwt-plugin,ubik-jmeter-videostreaming-plugin
+
+RUN ls
+RUN pwd
 
 ENV PATH $PATH:$JMETER_BIN
 ENV JMETER_OUTPUT_PATH /tmp/out
