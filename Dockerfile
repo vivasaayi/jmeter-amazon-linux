@@ -27,15 +27,13 @@ RUN mkdir -p /tmp/data \
     && cd ${JMETER_HOME}/lib \
     && curl -O https://repo1.maven.org/maven2/kg/apc/cmdrunner/2.2/cmdrunner-2.2.jar \
     && cd ${JMETER_HOME}/lib/ext \
-    && curl -O https://repo1.maven.org/maven2/kg/apc/jmeter-plugins-manager/1.6/jmeter-plugins-manager-1.6.jar 
+    && curl -O https://repo1.maven.org/maven2/kg/apc/jmeter-plugins-manager/1.6/jmeter-plugins-manager-1.6.jar \
+    && java -cp ${JMETER_HOME}/lib/ext/jmeter-plugins-manager-1.6.jar org.jmeterplugins.repository.PluginManagerCMDInstaller \
+    && cd ${JMETER_HOME}/bin/ \
+    && ./PluginsManagerCMD.sh install-all-except jpgc-casutg,jpgc-autostop,ubik-jmeter-autocorrelator-plugin,ubik-jmeter-gwt-plugin,ubik-jmeter-videostreaming-plugin
 
-RUN ls
-RUN pwd
-
-RUN java -cp ${JMETER_HOME}/lib/ext/jmeter-plugins-manager-1.6.jar org.jmeterplugins.repository.PluginManagerCMDInstaller \
-    && ${JMETER_HOME}/bin/PluginsManagerCMD.sh install-all-except jpgc-casutg,jpgc-autostop,ubik-jmeter-autocorrelator-plugin,ubik-jmeter-gwt-plugin,ubik-jmeter-videostreaming-plugin
-
-RUN ls
+RUN ls ${JMETER_HOME}/bin/
+RUN ls ${JMETER_HOME}/lib/ext/
 RUN pwd
 
 ENV PATH $PATH:$JMETER_BIN
