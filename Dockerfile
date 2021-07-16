@@ -29,7 +29,12 @@ RUN mkdir -p /tmp/data \
     && curl -O https://repo1.maven.org/maven2/kg/apc/jmeter-plugins-manager/1.6/jmeter-plugins-manager-1.6.jar 
 
 RUN java -cp ${JMETER_HOME}/lib/ext/jmeter-plugins-manager-1.6.jar org.jmeterplugins.repository.PluginManagerCMDInstaller \
-    && ${JMETER_HOME}/bin/PluginsManagerCMD.sh install-all-except jpgc-casutg,jpgc-autostop
+    && ${JMETER_HOME}/bin/PluginsManagerCMD.sh install-all-except \
+        jpgc-casutg, \
+        jpgc-autostop, \
+        ubik-jmeter-autocorrelator-plugin \
+        ubik-jmeter-gwt-plugin \
+        ubik-jmeter-videostreaming-plugin
 
 ENV PATH $PATH:$JMETER_BIN
 ENV JMETER_OUTPUT_PATH /tmp/out
